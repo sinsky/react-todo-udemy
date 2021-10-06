@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { InputTodo } from "./components/InputTodo";
+import { NoCompleteTodo } from "./components/NoCompleteTodo";
 
 import "./styles.css";
 export const App = () => {
@@ -43,20 +44,11 @@ export const App = () => {
         onChange={onChangeTodoText}
         onClick={addTodoItem}
       />
-      <section className="nocomplete-area">
-        <p className="title">未達成Todo</p>
-        <ul id="nocomp-items">
-          {noCompleteTodos.map((todoItem, index) => {
-            return (
-              <li className="list-row" key={todoItem}>
-                <span className="todo-title">{todoItem}</span>
-                <button onClick={() => moveComplateTodo(index)}>完了</button>
-                <button onClick={() => deleteTodo(index)}>削除</button>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      <NoCompleteTodo
+        todoItems={noCompleteTodos}
+        moveComplateTodo={moveComplateTodo}
+        deleteTodo={deleteTodo}
+      />
       <section className="complete-area">
         <p className="title">完了したTodo</p>
         <ul id="comp-items">
