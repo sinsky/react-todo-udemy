@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import "./styles.css";
 export const App = () => {
   const [todoText, setTodoText] = useState("");
-  const [noCompleteTodos, setNoCompleteTodos] = useState(["Doit"]);
-  const [completeTodos, setCompleteTodos] = useState(["complete"]);
+  const [noCompleteTodos, setNoCompleteTodos] = useState([]);
+  const [completeTodos, setCompleteTodos] = useState([]);
   const onChangeTodoText = (event) => {
     setTodoText(event.target.value);
   };
@@ -26,6 +26,14 @@ export const App = () => {
 
     setNoCompleteTodos(noCompTodos);
     setCompleteTodos(compTodos);
+  };
+  const moveNoCompleteTodo = (index) => {
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    const newNoCompleteTodos = [...noCompleteTodos, completeTodos[index]];
+
+    setNoCompleteTodos(newNoCompleteTodos);
+    setCompleteTodos(newCompleteTodos);
   };
   return (
     <>
@@ -61,11 +69,11 @@ export const App = () => {
       <section className="complete-area">
         <p className="title">完了したTodo</p>
         <ul id="comp-items">
-          {completeTodos.map((todoItem) => {
+          {completeTodos.map((todoItem, index) => {
             return (
               <li className="list-row" key={todoItem}>
                 <span className="todo-title">{todoItem}</span>
-                <button className="moveNoCompleteTodo">戻す</button>
+                <button onClick={() => moveNoCompleteTodo(index)}>戻す</button>
               </li>
             );
           })}
