@@ -8,6 +8,13 @@ export const App = () => {
   const onChangeTodoText = (event) => {
     setTodoText(event.target.value);
   };
+  const addTodoItem = () => {
+    if (todoText === "") return;
+    const newTodos = [...noCompleteTodos];
+    newTodos.push(todoText);
+    setNoCompleteTodos(newTodos);
+    setTodoText("");
+  };
   return (
     <>
       <section class="input-area">
@@ -20,7 +27,9 @@ export const App = () => {
             onChange={onChangeTodoText}
             id="todoText"
           />
-          <button id="todoAdded">add</button>
+          <button id="todoAdded" onClick={addTodoItem}>
+            add
+          </button>
         </div>
       </section>
       <section class="nocomplete-area">
