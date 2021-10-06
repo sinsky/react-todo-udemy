@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { CompleteTodo } from "./components/CompleteTodo";
 import { InputTodo } from "./components/InputTodo";
 import { NoCompleteTodo } from "./components/NoCompleteTodo";
 
 import "./styles.css";
+
 export const App = () => {
   const [todoText, setTodoText] = useState("");
   const [noCompleteTodos, setNoCompleteTodos] = useState([]);
@@ -49,20 +51,10 @@ export const App = () => {
         moveComplateTodo={moveComplateTodo}
         deleteTodo={deleteTodo}
       />
-      <section className="complete-area">
-        <p className="title">完了したTodo</p>
-        <ul id="comp-items">
-          {completeTodos.map((todoItem, index) => {
-            return (
-              <li className="list-row" key={todoItem}>
-                <span className="todo-title">{todoItem}</span>
-                <button onClick={() => moveNoCompleteTodo(index)}>戻す</button>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-
+      <CompleteTodo
+        completeTodos={completeTodos}
+        moveNoCompleteTodo={moveNoCompleteTodo}
+      />
       <script src="src/index.js"></script>
     </>
   );
