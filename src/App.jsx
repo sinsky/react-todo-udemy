@@ -17,9 +17,9 @@ export const App = () => {
   };
   return (
     <>
-      <section class="input-area">
-        <p class="title">Todoの登録</p>
-        <div class="register-area">
+      <section className="input-area">
+        <p className="title">Todoの登録</p>
+        <div className="register-area">
           <input
             type="text"
             placeholder="prease todo write!"
@@ -32,28 +32,28 @@ export const App = () => {
           </button>
         </div>
       </section>
-      <section class="nocomplete-area">
-        <p class="title">未達成Todo</p>
+      <section className="nocomplete-area">
+        <p className="title">未達成Todo</p>
         <ul id="nocomp-items">
           {noCompleteTodos.map((todoItem) => {
             return (
-              <li class="list-row" key={todoItem}>
-                <span class="todo-title">{todoItem}</span>
-                <button class="moveComplateTodo">完了</button>
-                <button class="deleteTodo">削除</button>
+              <li className="list-row" key={todoItem}>
+                <span className="todo-title">{todoItem}</span>
+                <button className="moveComplateTodo">完了</button>
+                <button className="deleteTodo">削除</button>
               </li>
             );
           })}
         </ul>
       </section>
-      <section class="complete-area">
-        <p class="title">完了したTodo</p>
+      <section className="complete-area">
+        <p className="title">完了したTodo</p>
         <ul id="comp-items">
           {completeTodos.map((todoItem) => {
             return (
-              <li class="list-row" key={todoItem}>
-                <span class="todo-title">{todoItem}</span>
-                <button class="moveNoCompleteTodo">戻す</button>
+              <li className="list-row" key={todoItem}>
+                <span className="todo-title">{todoItem}</span>
+                <button className="moveNoCompleteTodo">戻す</button>
               </li>
             );
           })}
