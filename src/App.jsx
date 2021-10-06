@@ -10,8 +10,7 @@ export const App = () => {
   };
   const addTodoItem = () => {
     if (todoText === "") return;
-    const newTodos = [...noCompleteTodos];
-    newTodos.push(todoText);
+    const newTodos = [...noCompleteTodos, todoText];
     setNoCompleteTodos(newTodos);
     setTodoText("");
   };
@@ -19,6 +18,14 @@ export const App = () => {
     const newTodos = [...noCompleteTodos];
     newTodos.splice(index, 1);
     setNoCompleteTodos(newTodos);
+  };
+  const moveComplateTodo = (index) => {
+    const noCompTodos = [...noCompleteTodos];
+    noCompTodos.splice(index, 1);
+    const compTodos = [...completeTodos, noCompleteTodos[index]];
+
+    setNoCompleteTodos(noCompTodos);
+    setCompleteTodos(compTodos);
   };
   return (
     <>
@@ -44,7 +51,7 @@ export const App = () => {
             return (
               <li className="list-row" key={todoItem}>
                 <span className="todo-title">{todoItem}</span>
-                <button className="moveComplateTodo">完了</button>
+                <button onClick={() => moveComplateTodo(index)}>完了</button>
                 <button onClick={() => deleteTodo(index)}>削除</button>
               </li>
             );
