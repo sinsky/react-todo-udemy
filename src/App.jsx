@@ -15,6 +15,11 @@ export const App = () => {
     setNoCompleteTodos(newTodos);
     setTodoText("");
   };
+  const deleteTodo = (index) => {
+    const newTodos = [...noCompleteTodos];
+    newTodos.splice(index, 1);
+    setNoCompleteTodos(newTodos);
+  };
   return (
     <>
       <section className="input-area">
@@ -35,12 +40,12 @@ export const App = () => {
       <section className="nocomplete-area">
         <p className="title">未達成Todo</p>
         <ul id="nocomp-items">
-          {noCompleteTodos.map((todoItem) => {
+          {noCompleteTodos.map((todoItem, index) => {
             return (
               <li className="list-row" key={todoItem}>
                 <span className="todo-title">{todoItem}</span>
                 <button className="moveComplateTodo">完了</button>
-                <button className="deleteTodo">削除</button>
+                <button onClick={() => deleteTodo(index)}>削除</button>
               </li>
             );
           })}
