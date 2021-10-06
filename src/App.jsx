@@ -6,7 +6,6 @@ import { NoCompleteTodo } from "./components/NoCompleteTodo";
 import "./styles.css";
 
 export const App = () => {
-  const maxTodos = 5;
   const [todoText, setTodoText] = useState("");
   const [noCompleteTodos, setNoCompleteTodos] = useState([]);
   const [completeTodos, setCompleteTodos] = useState([]);
@@ -46,11 +45,7 @@ export const App = () => {
         todoText={todoText}
         onChange={onChangeTodoText}
         onClick={addTodoItem}
-        disabled={noCompleteTodos.length >= maxTodos}
       />
-      {noCompleteTodos.length >= maxTodos && (
-        <p style={{ color: "red" }}>登録できるtodoは{maxTodos}個までです</p>
-      )}
       <NoCompleteTodo
         todoItems={noCompleteTodos}
         moveComplateTodo={moveComplateTodo}
