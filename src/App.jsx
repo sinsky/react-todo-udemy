@@ -2,14 +2,24 @@ import React, { useState } from "react";
 
 import "./styles.css";
 export const App = () => {
+  const [todoText, setTodoText] = useState("");
   const [noCompleteTodos, setNoCompleteTodos] = useState(["Doit"]);
   const [completeTodos, setCompleteTodos] = useState(["complete"]);
+  const onChangeTodoText = (event) => {
+    setTodoText(event.target.value);
+  };
   return (
     <>
       <section class="input-area">
         <p class="title">Todoの登録</p>
         <div class="register-area">
-          <input type="text" placeholder="prease todo write!" id="todoText" />
+          <input
+            type="text"
+            placeholder="prease todo write!"
+            value={todoText}
+            onChange={onChangeTodoText}
+            id="todoText"
+          />
           <button id="todoAdded">add</button>
         </div>
       </section>
