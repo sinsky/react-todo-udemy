@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { InputTodo } from "./components/InputTodo";
 
 import "./styles.css";
 export const App = () => {
@@ -37,21 +38,11 @@ export const App = () => {
   };
   return (
     <>
-      <section className="input-area">
-        <p className="title">Todoの登録</p>
-        <div className="register-area">
-          <input
-            type="text"
-            placeholder="prease todo write!"
-            value={todoText}
-            onChange={onChangeTodoText}
-            id="todoText"
-          />
-          <button id="todoAdded" onClick={addTodoItem}>
-            add
-          </button>
-        </div>
-      </section>
+      <InputTodo
+        todoText={todoText}
+        onChange={onChangeTodoText}
+        onClick={addTodoItem}
+      />
       <section className="nocomplete-area">
         <p className="title">未達成Todo</p>
         <ul id="nocomp-items">
